@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>リアルIQ測定 — 開発ビルド</title>
+<style>
+  :root { color-scheme: light; }
+  body {
+    margin: 0; padding: 32px 20px 60px;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+    background: #f5f5f2; color: #16181d; line-height: 1.7;
+  }
+  main { max-width: 560px; margin: 0 auto; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  p.sub { color: #63676f; font-size: 14px; margin: 0 0 28px; }
+  a.install {
+    display: block; text-align: center; text-decoration: none;
+    background: #2f4a7d; color: #fff; font-weight: 700; font-size: 17px;
+    padding: 18px; border-radius: 12px; margin-bottom: 10px;
+  }
+  .note { font-size: 13px; color: #63676f; }
+  section { background: #fff; border: 1px solid #dedddA; border-radius: 16px; padding: 16px 18px; margin-top: 22px; }
+  h2 { font-size: 15px; margin: 0 0 8px; }
+  code { background: #ececea; padding: 2px 6px; border-radius: 5px; font-size: 12px; word-break: break-all; }
+  ul { padding-left: 20px; margin: 8px 0 0; }
+  li { margin-bottom: 6px; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>リアルIQ測定 — 開発ビルド</h1>
+  <p class="sub">Safari で開いて、下のボタンを押してください。</p>
+
+  <a class="install" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Frmanabe.github.io%2Frealiq-dev-dist%2Fmanifest.xml">
+    iPhone にインストール
+  </a>
+  <p class="note">
+    このビルドは ad hoc 署名です。<strong>登録された端末にしか入りません</strong>。
+    他の端末では署名の検証で弾かれます。
+  </p>
+
+  <section>
+    <h2>入らないとき</h2>
+    <ul>
+      <li>Safari で開いていますか（Chrome など他のブラウザでは動きません）</li>
+      <li>前に失敗した残骸がホーム画面に残っていませんか。残っていたら先に削除してください</li>
+      <li>「信頼されていないデベロッパ」と出たら、設定 → 一般 → VPNとデバイス管理 から許可します</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>インストールしたあと</h2>
+    <p style="font-size:14px;margin:0 0 8px">PC 側で開発サーバーを起動してから、Safari で次を開きます。</p>
+    <p><code>http://&lt;PCのIP&gt;:8081/_expo/link?platform=ios&amp;choice=expo-dev-client</code></p>
+    <ul>
+      <li><strong><code>&amp;choice=expo-dev-client</code> を省かないこと。</strong>
+          省くと Expo Go 用のURLへ転送され、Expo Go は使えないので<strong>エラーも出ずに何も起きません</strong></li>
+      <li>設定 → プライバシーとセキュリティ → ローカルネットワーク で、このアプリを ON にし、
+          <strong>アプリを完全終了して起動し直す</strong>（iOS はこの変更を再起動まで反映しません）</li>
+      <li>iPhone と PC が同じネットワークにいることを、IPアドレスの数字で確かめてください</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
