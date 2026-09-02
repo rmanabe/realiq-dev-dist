@@ -52,7 +52,14 @@
   <section>
     <h2>インストールしたあと</h2>
     <p style="font-size:14px;margin:0 0 8px">PC 側で開発サーバーを起動してから、Safari で次を開きます。</p>
-    <p><code>http://&lt;PCのIP&gt;:8081/_expo/link?platform=ios&amp;choice=expo-dev-client</code></p>
+    <a class="install" style="font-size:15px;padding:14px"
+       href="http://192.168.10.15:8084/_expo/link?platform=ios&amp;choice=expo-dev-client">
+      開発サーバーに接続（192.168.10.15:8084）
+    </a>
+    <p class="note" style="margin:0 0 10px">
+      IP とポートは起動のたびに変わりえます。変わったときは次の形で開いてください。
+    </p>
+    <p><code>http://&lt;PCのIP&gt;:&lt;ポート&gt;/_expo/link?platform=ios&amp;choice=expo-dev-client</code></p>
     <ul>
       <li><strong><code>&amp;choice=expo-dev-client</code> を省かないこと。</strong>
           省くと Expo Go 用のURLへ転送され、Expo Go は使えないので<strong>エラーも出ずに何も起きません</strong></li>
