@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>リアルIQ測定 — 開発ビルド</title>
+<title>リアルIQ測定 — 実機テスト用</title>
 <style>
   :root { color-scheme: light; }
   body {
@@ -19,42 +19,51 @@
     background: #2f4a7d; color: #fff; font-weight: 700; font-size: 17px;
     padding: 18px; border-radius: 12px; margin-bottom: 10px;
   }
+  a.install.sub2 { background: #6b7280; font-size: 15px; padding: 14px; }
   .note { font-size: 13px; color: #63676f; }
   section { background: #fff; border: 1px solid #dedddA; border-radius: 16px; padding: 16px 18px; margin-top: 22px; }
+  section.primary { border-color: #2f4a7d; }
   h2 { font-size: 15px; margin: 0 0 8px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; color: #fff; background: #2f4a7d; border-radius: 999px; padding: 2px 9px; vertical-align: 2px; margin-left: 6px; }
+  .tag.grey { background: #6b7280; }
   code { background: #ececea; padding: 2px 6px; border-radius: 5px; font-size: 12px; word-break: break-all; }
   ul { padding-left: 20px; margin: 8px 0 0; }
   li { margin-bottom: 6px; font-size: 14px; }
+  p.body { font-size: 14px; margin: 0 0 10px; }
 </style>
 </head>
 <body>
 <main>
-  <h1>リアルIQ測定 — 開発ビルド</h1>
-  <p class="sub">Safari で開いて、下のボタンを押してください。</p>
+  <h1>リアルIQ測定 — 実機テスト用</h1>
+  <p class="sub">iPhone の Safari で開いてください。ビルドは2種類あります。</p>
 
-  <a class="install" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Frmanabe.github.io%2Frealiq-dev-dist%2Fmanifest.xml">
-    iPhone にインストール
-  </a>
-  <p class="note">
-    このビルドは ad hoc 署名です。<strong>登録された端末にしか入りません</strong>。
-    他の端末では署名の検証で弾かれます。
-  </p>
-
-  <section>
-    <h2>入らないとき</h2>
-    <ul>
-      <li>Safari で開いていますか（Chrome など他のブラウザでは動きません）</li>
-      <li>前に失敗した残骸がホーム画面に残っていませんか。残っていたら先に削除してください</li>
-      <li>「信頼されていないデベロッパ」と出たら、設定 → 一般 → VPNとデバイス管理 から許可します</li>
-    </ul>
+  <section class="primary">
+    <h2>1. 単体で動くビルド<span class="tag">おすすめ</span></h2>
+    <p class="body">
+      JavaScript を焼き込んであるので、<strong>PC も Wi-Fi も要りません</strong>。
+      入れたらホーム画面のアイコンを押すだけで動きます。16分の通しを測るならこちらです。
+    </p>
+    <a class="install" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Frmanabe.github.io%2Frealiq-dev-dist%2Fmanifest-preview.xml">
+      これをインストール
+    </a>
+    <p class="note">
+      広告は Google のテスト広告、課金の導線は出ません（キーを設定していないため）。
+      検査そのもの・時間制限・結果・見直しは本番と同じです。
+    </p>
   </section>
 
   <section>
-    <h2>インストールしたあと</h2>
-    <p style="font-size:14px;margin:0 0 8px">PC 側で開発サーバーを起動してから、Safari で次を開きます。</p>
-    <a class="install" style="font-size:15px;padding:14px"
-       href="http://192.168.10.15:8084/_expo/link?platform=ios&amp;choice=expo-dev-client">
-      開発サーバーに接続（192.168.10.15:8084）
+    <h2>2. 開発ビルド<span class="tag grey">JSの修正をすぐ試す用</span></h2>
+    <p class="body">
+      PC の開発サーバーから JavaScript を読みます。直した内容がビルドを待たずに
+      端末へ届きますが、<strong>PC が起動していて同じ Wi-Fi にいることが必要</strong>です。
+    </p>
+    <a class="install sub2" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Frmanabe.github.io%2Frealiq-dev-dist%2Fmanifest-development.xml">
+      開発ビルドをインストール
+    </a>
+    <p class="body" style="margin-top:12px">入れたあと、Safari で次を開いて接続します。</p>
+    <a class="install sub2" href="http://192.168.11.14:8081/_expo/link?platform=ios&amp;choice=expo-dev-client">
+      開発サーバーに接続（192.168.11.14:8081）
     </a>
     <p class="note" style="margin:0 0 10px">
       IP とポートは起動のたびに変わりえます。変わったときは次の形で開いてください。
@@ -66,6 +75,26 @@
       <li>設定 → プライバシーとセキュリティ → ローカルネットワーク で、このアプリを ON にし、
           <strong>アプリを完全終了して起動し直す</strong>（iOS はこの変更を再起動まで反映しません）</li>
       <li>iPhone と PC が同じネットワークにいることを、IPアドレスの数字で確かめてください</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2つは同時に入りません</h2>
+    <p class="body" style="margin:0">
+      どちらも同じアプリID（<code>com.robonetcommunications.realiq</code>）なので、
+      あとから入れたほうが前のものを<strong>置き換えます</strong>。
+      切り替えたいときは、もう一方をインストールし直してください。
+    </p>
+  </section>
+
+  <section>
+    <h2>入らないとき</h2>
+    <ul>
+      <li>Safari で開いていますか（Chrome など他のブラウザでは動きません）</li>
+      <li>前に失敗した残骸がホーム画面に残っていませんか。残っていたら先に削除してください</li>
+      <li>「信頼されていないデベロッパ」と出たら、設定 → 一般 → VPNとデバイス管理 から許可します</li>
+      <li>どちらも ad hoc 署名です。<strong>登録された端末にしか入りません</strong>
+          （他の端末では署名の検証で弾かれます）</li>
     </ul>
   </section>
 </main>
