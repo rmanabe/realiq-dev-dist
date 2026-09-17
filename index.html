@@ -35,7 +35,7 @@
 <body>
 <main>
   <h1>リアルIQ測定 — 実機テスト用</h1>
-  <p class="sub">iPhone の Safari で開いてください。ビルドは2種類あります。</p>
+  <p class="sub">iPhone の Safari で開いてください。ビルドは3種類あります。</p>
 
   <section class="primary">
     <h2>1. 単体で動くビルド<span class="tag">おすすめ</span></h2>
@@ -52,8 +52,25 @@
     </p>
   </section>
 
+  <section class="primary">
+    <h2>2. テスト広告ビルド<span class="tag">広告の確認用</span></h2>
+    <p class="body">
+      本番と同じ設定のまま、<strong>広告だけ Google のテスト広告に差し替えた</strong>ビルドです。
+      テスト広告は在庫の事情に関係なく必ず出るので、
+      <strong>「広告が出ないのはアプリのせいか、AdMob 側の事情か」</strong>がこれで分かります。
+    </p>
+    <a class="install" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Frmanabe.github.io%2Frealiq-dev-dist%2Fmanifest-adstest.xml">
+      テスト広告ビルドをインストール
+    </a>
+    <p class="note">
+      出る → アプリ側は正常。出ないのは AdMob の配信制限（ストア未紐付け）。<br>
+      出ない → アプリ側の問題。<br>
+      <strong>このビルドの広告収益はゼロです。</strong>確認が済んだら本番のビルドに戻してください。
+    </p>
+  </section>
+
   <section>
-    <h2>2. 開発ビルド<span class="tag grey">JSの修正をすぐ試す用</span></h2>
+    <h2>3. 開発ビルド<span class="tag grey">JSの修正をすぐ試す用</span></h2>
     <p class="body">
       PC の開発サーバーから JavaScript を読みます。直した内容がビルドを待たずに
       端末へ届きますが、<strong>PC が起動していて同じ Wi-Fi にいることが必要</strong>です。
